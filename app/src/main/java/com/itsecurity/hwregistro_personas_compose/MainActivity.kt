@@ -21,4 +21,34 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@Composable
+fun MyApp(){
+    RegistroPersonaComposeTheme {
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+            color = MaterialTheme.colors.background
+        ) {
+            val navHostController = rememberNavController()
+            NavHost(navController = navHostController,
+                startDestination = Screen.ListadoPersonaScreen.route){
+
+                composable(route = Screen.ListadoPersonaScreen.route){
+                    ListadoPersonasScreen(goRegistroPersonas = {navHostController.navigate(Screen.RegistroPersonaScreen.route)},
+                        goListaOcupaciones = {navHostController.navigate(Screen.ListadoOcupacionesScreen.route)})
+                }
+
+                composable(route = Screen.RegistroPersonaScreen.route){
+                    RegistroPersonasScreen(backToListadoPersonas ={ navHostController.navigate(Screen.ListadoPersonaScreen.route)})
+                }
+
+                composable(route = Screen.ListadoOcupacionesScreen.route){
+                    ListaOcupacionScreen(goToRegistroOcupaciones = {navHostController.navigate(Screen.RegistroOcupacionesScreen.route)})
+                }
+
+                composable(route = Screen.RegistroOcupacionesScreen.route){
+                    registrosOcupacionScreen(backToListadoOcupaciones = {navHostController.navigate(Screen.ListadoOcupacionesScreen.route)})
+                }
+            }
+        }
+    }
 
