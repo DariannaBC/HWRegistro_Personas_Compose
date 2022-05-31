@@ -10,6 +10,10 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -113,6 +117,67 @@ fun ListadoPersonasScreen(goRegistroPersonas:() -> Unit, goListaOcupaciones:() -
                         Text(text = "$persons")
                     }
                 }
+            }
+        }
+    }
+}
+
+@Composable
+fun RegistroPersonasScreen(backToListadoPersonas:() -> Unit){
+
+    var nombres by rememberSaveable() {
+        mutableStateOf("")
+    }
+
+    var email by rememberSaveable() {
+        mutableStateOf("")
+    }
+
+    var salario by rememberSaveable() {
+        mutableStateOf("")
+    }
+
+    val ScaffoldState = rememberScaffoldState()
+
+    Scaffold(
+        topBar = {
+            TopAppBar(title = { Text(text = "Registro de Personas")})
+        }
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)) {
+
+            OutlinedTextField(
+                value = nombres,
+                onValueChange = {nombres = it},
+                label = { Text(text = "Nombres")},
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            OutlinedTextField(
+                value = email,
+                onValueChange = {email = it},
+                label = { Text(text = "Email")},
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            OutlinedTextField(
+                value = salario,
+                onValueChange = {salario = it},
+                label = { Text(text = "Salario")},
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Button(onClick = {
+                backToListadoPersonas()
+            },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 20.dp)
+            ) {
+                Text(text = "Guardar")
             }
         }
     }
