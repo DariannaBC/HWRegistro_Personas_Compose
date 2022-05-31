@@ -98,7 +98,7 @@ fun ListadoPersonasScreen(goRegistroPersonas:() -> Unit, goListaOcupaciones:() -
                 Text(text = "Ocupaciones")
             }
 
-            val listaPersonas = listOf("1", "Darianna", "dari@gmail.com", "500.00")
+            val listaPersonas = listOf("1 Darianna dari@gmail.com 500.00", "2 Junior ju@gmail.com 200.00")
             LazyColumn(
                 modifier = Modifier.fillMaxWidth()
             ){
@@ -200,7 +200,8 @@ fun ListaOcupacionScreen(goToRegistroOcupaciones:() -> Unit){
                 .padding(8.dp)
         ) {
 
-            val listaOcupaciones = listOf("1", "Admin")
+            val listaOcupaciones = listOf("1 Experta en Ciberseguridad", "2 Experta en SQL" , "3 Developer" , "4 Analista", "5 Tester"
+            , "6 Programacion", "7 Redes", "8 Switchig", "9 Routing", "10 Desarrollo Web")
             LazyColumn(
                 modifier = Modifier.fillMaxWidth()
             ){
