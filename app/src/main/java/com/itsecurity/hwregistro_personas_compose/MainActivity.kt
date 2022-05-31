@@ -98,7 +98,9 @@ fun ListadoPersonasScreen(goRegistroPersonas:() -> Unit, goListaOcupaciones:() -
                 Text(text = "Ocupaciones")
             }
 
-            val listaPersonas = listOf("1 Darianna dari@gmail.com 500.00", "2 Junior ju@gmail.com 200.00")
+            val listaPersonas = listOf("1 Darianna dari@gmail.com 500.00", "2 Junior ju@gmail.com 200.00"
+            , "3 Stephany St@gmail.com 300.00", "4 Carlos ca@gmail.com 400.00 ", "5 Victor vm@gmail.com 600.00", "6 Pedro ps@gmail.com 70.00"
+            , "7 Michael m@gmail.com 800.00", "8 Frankelyn fr@gmail.com 900.00", "9 Joan j@gmail.com 100.00", "10 Manny man@gmail.com 150.00")
             LazyColumn(
                 modifier = Modifier.fillMaxWidth()
             ){
