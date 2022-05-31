@@ -182,3 +182,88 @@ fun RegistroPersonasScreen(backToListadoPersonas:() -> Unit){
         }
     }
 }
+
+@Composable
+fun ListaOcupacionScreen(goToRegistroOcupaciones:() -> Unit){
+    val ScaffoldState = rememberScaffoldState()
+
+    Scaffold(
+        topBar ={
+            TopAppBar(title = { Text(text = "Listado de Ocupaciones")})
+        },
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = {
+                    goToRegistroOcupaciones()
+                },
+                backgroundColor = MaterialTheme.colors.primary
+            ) {
+                Icon(imageVector = Icons.Default.Add, contentDescription = "Nuevo")
+            }
+        },
+        scaffoldState = ScaffoldState
+
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)
+        ) {
+
+            val listaOcupaciones = listOf("1", "Admin")
+            LazyColumn(
+                modifier = Modifier.fillMaxWidth()
+            ){
+                items(listaOcupaciones) { ocupaciones ->
+                    Row() {
+                        Text(text = "$ocupaciones")
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun registrosOcupacionScreen(backToListadoOcupaciones:() -> Unit){
+    var ocupacion by rememberSaveable() {
+        mutableStateOf("")
+    }
+
+    Scaffold(
+        topBar = {
+            TopAppBar(title = { Text(text = "Registro de Ocupaciones")})
+        }
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)) {
+
+            OutlinedTextField(
+                value = ocupacion,
+                onValueChange = {ocupacion = it},
+                label = { Text(text = "Ocupacion")},
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Button(onClick = {
+                backToListadoOcupaciones()
+            },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 20.dp)
+            ) {
+                Text(text = "Guardar")
+            }
+        }
+    }
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun DefaultPreview() {
+    RegistroPersonaComposeTheme {
+        MyApp()
+    }
+}
