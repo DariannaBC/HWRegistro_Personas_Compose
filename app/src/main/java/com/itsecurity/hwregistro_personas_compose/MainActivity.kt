@@ -20,6 +20,10 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.call.registropersonacompose.ui.theme.componentes.ListaOcupacionScreen
+import com.call.registropersonacompose.ui.theme.componentes.ListadoPersonasScreen
+import com.call.registropersonacompose.ui.theme.componentes.RegistroPersonasScreen
+import com.call.registropersonacompose.ui.theme.componentes.registrosOcupacionScreen
 
 import com.itsecurity.hwregistro_personas_compose.ui.theme.RegistroPersonaComposeTheme
 import com.itsecurity.hwregistro_personas_compose.util.Screen
